@@ -1,7 +1,7 @@
 data = open('input.txt', 'r').read().split('\n')
 data = data[:-1]
 
-def old(input):
+def checkSafe(input):
     status = 'Fail'
 
     prev = input[0]
@@ -18,19 +18,6 @@ def old(input):
     if status != 'Fail':
         return True
     return False
-
-def checkSafe(arr):
-    ascending = True
-    descending = True
-
-    for i in range(len(arr) - 1):
-        if arr[i] > arr[i+1]:
-            ascending = False
-        if arr[i] < arr[i+1]:
-            descending = False
-        if abs(arr[i] - arr[i+1]) > 3 or abs(arr[i] - arr[i+1]) < 1:
-            return False
-    return ascending or descending
 
 def run(data):
     safeCount = 0
@@ -51,3 +38,14 @@ run(data)
 
 test = ["1 3 8 5 7 8"]
 run(test)
+
+"""
+Better time complexity
+checkSafe : same old
+Consider : check if the result is valid after checking
+
+consider(0) : if this was the problem then ok, if it isn't the problem it doesn't matter
+for through the rest of the elements
+    if there is a difference of more than 3, then consider deleting either that element or the next one, then break
+    if 2 element after exist, chedk for triangle, if it's exists, consider deleting one of the 3 elements, then break
+"""
