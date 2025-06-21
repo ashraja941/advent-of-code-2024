@@ -63,3 +63,4 @@ if __name__ == "__main__":
     test = ['10|2',' ','10 245 42']
 
     print(run(data))
+
