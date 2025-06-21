@@ -1,0 +1,39 @@
+from typing import DefaultDict
+
+def findMiddle(update: list):
+    return update[len(update)//2]
+
+def run(data):
+    conditions = DefaultDict(list)
+    updates = []
+    readConditionsFlag = True
+    middleSum = 0
+    for line in data:
+        # print(line)
+        if line == " ":
+            readConditionsFlag = False
+            continue
+
+        if readConditionsFlag:
+            x,y = list(map(int,line.split("|")))
+            conditions[x].append(y)
+
+        else:
+            updates.append(list(map(int,line.split())))
+
+    for update in updates:
+        currUpdate = set()
+        validFlag = False
+        for item in update:
+
+
+
+
+if __name__ == "__main__":
+    data = open('input.txt', 'r').read().split('\n')
+    data = data[:-1]
+
+    test = ['10|2',' ','10 245 42']
+
+    run(test)
+
