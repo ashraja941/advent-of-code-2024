@@ -11,9 +11,6 @@ def solve(grid):
     global visited
     ans = 0
 
-    rMax = len(grid)
-    cMax = len(grid[0])
-
     for r, row in enumerate(grid):
         for c, value in enumerate(row):
             if (r,c) in visited:
@@ -29,7 +26,7 @@ def solve(grid):
 def findGroups(grid,r,c,curSearch):
     global visited
 
-    area, perimeter = 1,4
+    area, corners = 1,4
     visited.add((r,c))
     
     for di, dj in directions:
@@ -39,13 +36,12 @@ def findGroups(grid,r,c,curSearch):
         if grid[curR][curC] != curSearch:
             continue
         if (curR,curC) in visited:
-            perimeter -= 1
             continue
         a, p = findGroups(grid,curR,curC,curSearch)
         area += a
-        perimeter += p - 1
+        corners += p 
 
-    return area, perimeter
+    return area, corners
 
 
 
@@ -53,4 +49,5 @@ if __name__ == '__main__':
     data = open('input.txt').read().strip().split()
     test = open('test.txt').read().strip().split()
 
-    print(solve(test))
+    print(solve(data))
+
